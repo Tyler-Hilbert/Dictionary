@@ -6,13 +6,13 @@ class WordController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function show()
 	{
 		$word = Input::get('word');
 		$conn = new mysqli("localhost", "root", "", "dictionary") or die("Connection failed: " . $conn->connect_error);
 		$sql = "SELECT definition FROM words WHERE word='" . $word ."'";
 		$results = $conn->query($sql);
 		$row = $results->fetch_assoc();
-		echo $row['definition'];
+		return $row['definition'];
 	}
 }

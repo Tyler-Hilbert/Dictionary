@@ -16,17 +16,4 @@ Route::get('/', function()
 	return View::make('search');
 });
 
-Route::post('word', 'WordController@store');
-
-Route::post('/search', array('before'=>'csrf','uses'=>function()
-{
-		$word = Input::get('word');
-		$conn = new mysqli("localhost", "root", "", "dictionary") or die("Connection failed: " . $conn->connect_error);
-		$sql = "SELECT definition FROM words WHERE word='" . $word ."'";
-		$results = $conn->query($sql);
-		$row = $results->fetch_assoc();
-		return $row['definition'];
-}));
-
-
-
+Route::post('search', 'WordController@show');
