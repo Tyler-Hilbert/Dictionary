@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('search');
+	return View::make('/home');
 });
 
 Route::post('search', 'WordController@show');
