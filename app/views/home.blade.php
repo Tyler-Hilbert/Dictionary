@@ -15,7 +15,7 @@
 
 		$(document).keydown(function(e) {
 			var key = e.which;
-			if(key == 13) {
+			if(key == 13) { 
 				search();
 			 }
 		});   
