@@ -12,9 +12,12 @@ class CreateWordsTable extends Migration {
 	 */
 	public function up()
 	{
-		$conn = new mysqli("localhost", "root", "", "dictionary");
-		$sql = "CREATE TABLE words (word text, definition text)";
-		$conn->query($sql);
+		if ( ! Schema::hasTable('words')) {
+			Schema::create('words', function($table) {
+				$table->string('word', 50);
+				$table->string('definition', 500);
+			});
+		}
 	}
 
 	/**
@@ -24,7 +27,7 @@ class CreateWordsTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::dropIfExists('words');
 	}
 
 }

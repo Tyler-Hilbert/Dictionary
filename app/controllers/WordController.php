@@ -8,11 +8,8 @@ class WordController extends \BaseController {
 	 */
 	public function show()
 	{
-		$word = Input::get('word');
-		$conn = new mysqli("localhost", "root", "", "dictionary") or die("Connection failed: " . $conn->connect_error);
-		$sql = "SELECT definition FROM words WHERE word='" . $word ."'";
-		$results = $conn->query($sql);
-		$row = $results->fetch_assoc();
-		return $row['definition'];
+		$word = strtoupper(Input::get('word'));
+		$def = DB::table('words')->where('word', $word)->first();
+		return $def->definition;
 	}
 }

@@ -21,8 +21,7 @@ class WordsTableSeeder extends Seeder
 
 			if (count($wordString) > 1) {
 				$def = $wordString[1];
-				$sql = "INSERT INTO words (word, definition) VALUES ('" . $word . "', '" . $def . "')";
-				$conn->query($sql);
+				DB::table('words')->insert(array('word' => $word, 'definition' => $def));
 			}
 		}
 		$conn->close();
