@@ -1,6 +1,5 @@
 @extends('layout')
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-	<script src="js/search.js"></script>
 	<script>
 		function search() {
 			var word = document.getElementById('word').value;
